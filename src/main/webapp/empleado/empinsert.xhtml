@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Añadir Empleado</title>
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+		crossorigin="anonymous"></link>
+</h:head>
+<h:body>
+
+	<div class="container">
+		<h2 class="display-4">Insertar datos en Empleado</h2>
+		<div class="row">
+			<h:form class="form-control">
+
+				<h:outputText value="Tipo de documento" class="form-label"></h:outputText>
+				<h:inputText value="#{emp.documento_tipo}" class="form-control"></h:inputText>
+
+				<h:outputText value="Documento Numero" class="form-label"></h:outputText>
+				<h:inputText value="#{emp.documento_numero}" class="form-control"></h:inputText>
+
+				<h:outputText value="Nombres" class="form-label"></h:outputText>
+				<h:inputText value="#{emp.nombres}" class="form-control"></h:inputText>
+
+				<h:outputText value="Apellidos" class="form-label"></h:outputText>
+				<h:inputText value="#{emp.apellidos}" class="form-control"></h:inputText>
+
+				<h:outputText value="ID Departamento" class="form-label"></h:outputText>
+				<h:inputText value="#{emp.id_departamentos_fk}" class="form-control"></h:inputText>
+
+				<h:outputText value="Direccion" class="form-label"></h:outputText>
+				<h:inputText value="#{emp.direccion}" class="form-control"></h:inputText>
+
+				<h:outputText value="Correo Electronico" class="form-label"></h:outputText>
+				<h:inputText value="#{emp.correo_electronico}" class="form-control"></h:inputText>
+
+				<h:outputText value="Telefono" class="form-label"></h:outputText>
+				<h:inputText value="#{emp.telefono}" class="form-control"></h:inputText>
+
+				<h:outputText value="Fecha Creacion" class="form-label"></h:outputText>
+				<h:inputText value="#{emp.fecha_hora_crea}" class="form-control"></h:inputText>
+
+				<h:outputText value="Fecha Modificacion" class="form-label"></h:outputText>
+				<h:inputText value="#{emp.fecha_hora_modifica}" class="form-control"></h:inputText>
+
+				<div class="d-grid gap-2 d-md-flex justify-content-md-center">
+					<h:commandButton action="#{empBean.añadir(emp)}" value="Añadir"
+						class="btn btn-success ms-5 mt-5"></h:commandButton>
+					<h:link outcome="/empleado/empleado.xhtml"
+						class="btn btn-danger ms-5 mt-5">Regresar</h:link>
+				</div>
+
+
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

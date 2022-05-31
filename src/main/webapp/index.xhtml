@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Vista Ciudad</title>
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+		crossorigin="anonymous"></link>
+</h:head>
+<h:body>
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><h:link class="nav-link active" aria-current="page" outcome="/index.xhtml">Ciudad</h:link></li>
+
+		<li class="nav-item"><h:link
+				outcome="/departamento/departamento.xhtml" class="nav-link">Departamento</h:link></li>
+		<li class="nav-item"><h:link outcome="/empleado/empleado.xhtml"
+				class="nav-link">Empleado</h:link></li>
+	</ul>
+
+	<h2 class="display-4 text-center pb-5 pt-5">
+		<h:outputText value="Lista Ciudades"></h:outputText>
+	</h2>
+	
+	<h:form>
+		<h:dataTable value="#{ciudadBean.obtenerCiudades()}" var="ciudad"
+			border="1" class="table table-striped">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{ciudad.id}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Codigo Ciudad</f:facet>
+				<h:outputText value="#{ciudad.codigo_ciudad}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Nombre Ciudad</f:facet>
+				<h:outputText value="#{ciudad.nombre_ciudad}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandButton action="#{ciudadBean.editar(ciudad.id)}"
+					value="Editar" class="btn btn-warning"></h:commandButton>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Eliminar</f:facet>
+				<h:commandButton action="#{ciudadBean.eliminar(ciudad.id)}"
+					value="Eliminar" class="btn btn-danger"></h:commandButton>
+			</h:column>
+		</h:dataTable>
+
+		<div class="d-grid gap-2 d-md-flex justify-content-md-center">
+			<h:commandButton action="#{ciudadBean.insertar}"
+				value="Añadir Ciudad" class="btn btn-success text-center"></h:commandButton>
+		</div>
+
+	</h:form>
+</h:body>
+</html>

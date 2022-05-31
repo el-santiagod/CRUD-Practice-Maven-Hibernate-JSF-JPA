@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Vista Empleado</title>
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+		crossorigin="anonymous"></link>
+</h:head>
+<h:body>
+
+	<ul class="nav nav-tabs">
+		<li class="nav-item"><h:link class="nav-link"
+				outcome="/index.xhtml">Ciudad</h:link></li>
+
+		<li class="nav-item"><h:link
+				outcome="/departamento/departamento.xhtml" class="nav-link">Departamento</h:link></li>
+		<li class="nav-item"><h:link outcome="/empleado/empleado.xhtml"
+				class="nav-link active" aria-current="page">Empleado</h:link></li>
+	</ul>
+
+	<h2 class="display-4 text-center pb-5 pt-5">
+		<h:outputText value="Lista Empleados"></h:outputText>
+	</h2>
+
+	<h:form>
+
+		<h:dataTable value="#{empBean.obtenerEmpleados()}" var="emp"
+			border="1" class="table table-striped">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{emp.id_empleado}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Tipo Documento</f:facet>
+				<h:outputText value="#{emp.documento_tipo}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Numero de documento</f:facet>
+				<h:outputText value="#{emp.documento_numero}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nombres</f:facet>
+				<h:outputText value="#{emp.nombres}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Apellidos</f:facet>
+				<h:outputText value="#{emp.apellidos}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">ID Departamento</f:facet>
+				<h:outputText value="#{emp.id_departamentos_fk}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Direccion</f:facet>
+				<h:outputText value="#{emp.direccion}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Correo Electronico</f:facet>
+				<h:outputText value="#{emp.correo_electronico}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nombre Telefono</f:facet>
+				<h:outputText value="#{emp.telefono}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Fecha Creacion</f:facet>
+				<h:outputText value="#{emp.fecha_hora_crea}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Fecha Modificacion</f:facet>
+				<h:outputText value="#{emp.fecha_hora_modifica}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandButton action="#{empBean.editar(emp.id_empleado)}"
+					value="Editar" class="btn btn-warning"></h:commandButton>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Eliminar</f:facet>
+				<h:commandButton action="#{empBean.eliminar(emp.id_empleado)}"
+					value="Eliminar" class="btn btn-danger"></h:commandButton>
+			</h:column>
+		</h:dataTable>
+		<div class="d-grid gap-2 d-md-flex justify-content-md-center">
+			<h:commandButton action="#{empBean.insertar}" value="Añadir Empleado"
+				class="btn btn-success text-center"></h:commandButton>
+		</div>
+
+	</h:form>
+</h:body>
+</html>
